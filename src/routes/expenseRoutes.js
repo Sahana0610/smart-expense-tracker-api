@@ -3,8 +3,14 @@ const express = require("express");
 const router = express.Router();
 
 const expenseController = require("../controllers/expenseController");
+const validateExpense = require("../middleware/validateExpense");
 
-router.post("/", expenseController.addExpense);
+router.post(
+    "/",
+    validateExpense,
+    expenseController.addExpense
+);
+
 
 router.get("/", expenseController.getAllExpenses);
 

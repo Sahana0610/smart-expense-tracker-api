@@ -5,7 +5,9 @@ const router = express.Router();
 // Temporary endpoint
 router.get("/", (req, res) => {
     res.status(200).json({
-        message: "Expense API working"
+        success: true,
+        message: "Smart Expense Tracker API is running",
+        version: "1.0.0"
     });
 });
 

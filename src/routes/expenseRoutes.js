@@ -12,7 +12,19 @@ router.post(
 );
 
 
-router.get("/", expenseController.getAllExpenses);
+router.get("/", (req, res) => {
+
+    if (req.query.category) {
+        return expenseController.getExpensesByCategory(req, res);
+    }
+
+    return expenseController.getAllExpenses(req, res);
+
+});
+
+router.get("/total", expenseController.getTotalExpenses);
+
+router.get("/total/:category", expenseController.getTotalByCategory);
 
 router.delete("/:id", expenseController.deleteExpense);
 

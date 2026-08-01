@@ -55,8 +55,54 @@ const deleteExpense = (id) => {
     return true;
 };
 
+/**
+ * Filter expenses by category
+ */
+const getExpensesByCategory = (category) => {
+
+    const expenses = readExpenses();
+
+    const searchCategory = category.trim().toLowerCase();
+
+    return expenses.filter(expense =>
+        expense.category.toLowerCase() === searchCategory
+    );
+};
+
+/**
+ * Calculate total of all expenses
+ */
+const getTotalExpenses = () => {
+
+    const expenses = readExpenses();
+
+    return expenses.reduce(
+        (total, expense) => total + expense.amount,
+        0
+    );
+};
+
+/**
+ * Calculate total for a category
+ */
+const getTotalByCategory = (category) => {
+
+    const expenses = readExpenses();
+
+    const searchCategory = category.trim().toLowerCase();
+
+    return expenses
+        .filter(expense =>
+            expense.category.toLowerCase() === searchCategory
+        )
+        .reduce((total, expense) => total + expense.amount, 0);
+};
+
 module.exports = {
     addExpense,
     getAllExpenses,
-    deleteExpense
+    deleteExpense,
+    getExpensesByCategory,
+    getTotalExpenses,
+    getTotalByCategory
 };

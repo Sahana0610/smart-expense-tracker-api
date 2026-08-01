@@ -12,5 +12,26 @@
     "amount": 350,
     "category": "Foods",
     "date": "2026-08-01"
+  },
+  {
+    "id": "6c8ff4d3-2738-4c03-9335-d8c945b18b66",
+    "title": "Noodles",
+    "amount": 350,
+    "category": "Food",
+    "date": "2026-08-01"
+  },
+  {
+    "id": "35a82190-b47d-457e-aeaa-af044882f292",
+    "title": "Burger",
+    "amount": 200,
+    "category": "Food",
+    "date": "2026-08-01"
+  },
+  {
+    "id": "57d03d3c-afde-4a4c-8de3-a8119b4fddd9",
+    "title": "Netflix",
+    "amount": 199,
+    "category": "Entertainment",
+    "date": "2026-08-01"
   }
 ]

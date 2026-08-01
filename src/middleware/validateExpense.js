@@ -1,40 +1,44 @@
 const validateExpense = (req, res, next) => {
+    let { title, amount, category, date } = req.body;
 
-    const { title, amount, category, date } = req.body;
+    const errors = [];
 
     // Validate title
-    if (!title || title.trim() === "") {
-        return res.status(400).json({
-            success: false,
-            message: "Title is required"
-        });
+    if (typeof title !== "string" || title.trim() === "") {
+        errors.push("Title is required and must be a non-empty string.");
+    } else {
+        req.body.title = title.trim();
     }
 
     // Validate amount
-    if (amount === undefined || isNaN(amount) || Number(amount) <= 0) {
-        return res.status(400).json({
-            success: false,
-            message: "Amount must be a positive number"
-        });
+    amount = Number(amount);
+
+    if (!Number.isFinite(amount) || amount <= 0) {
+        errors.push("Amount must be a positive number.");
+    } else {
+        req.body.amount = amount;
     }
 
     // Validate category
-    if (!category || category.trim() === "") {
-        return res.status(400).json({
-            success: false,
-            message: "Category is required"
-        });
+    if (typeof category !== "string" || category.trim() === "") {
+        errors.push("Category is required and must be a non-empty string.");
+    } else {
+        req.body.category = category.trim();
     }
 
     // Validate date
-    if (!date || isNaN(Date.parse(date))) {
+    if (!date || Number.isNaN(Date.parse(date))) {
+        errors.push("Date must be a valid date (YYYY-MM-DD).");
+    }
+
+    // Return all validation errors together
+    if (errors.length > 0) {
         return res.status(400).json({
             success: false,
-            message: "Invalid date"
+            errors
         });
     }
 
-    // Everything is valid
     next();
 };
 

@@ -1,10 +1,11 @@
 # AI Usage Notes
 
 AI tools were used throughout this project as a development assistant. This document breaks down what I wrote myself, where AI helped, what I changed and why, and what I chose not to use.
-
 ---
 
 ## 1. AI-Assisted vs. Self-Written Code
+
+I used **Claude** as a development assistant throughout this assignment.
 
 | Component | Origin |
 |---|---|
